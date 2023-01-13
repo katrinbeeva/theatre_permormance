@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         //database seeder is looking for adminseeder
-        $this->call(AdminSeeder::class);
+        $this->call(Admin::class);
         // this way we refresh _____ php artisan migrate:fresh --seed
     }
 }
