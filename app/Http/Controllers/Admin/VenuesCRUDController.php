@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CityRequest;
+use App\Http\Requests\VenueRequestRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -27,7 +27,7 @@ class VenuesCRUDController extends CRUDController
 
     public function setup()
     {
-        CRUD::setModel(\App\Models\City::class);
+        CRUD::setModel(\App\Models\Venue::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/venue');
         CRUD::setEntityNameStrings('venue', 'venues');
     }
