@@ -41,8 +41,7 @@ class VenuesCRUDController extends CRUDController
     protected function setupListOperation()
     {
         CRUD::column('name_of_theatre');
-        CRUD::column('location');
-        CRUD::column('city');
+        CRUD::column('location')->unique();
         CRUD::column('created_at');
         CRUD::column('updated_at');
 

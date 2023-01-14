@@ -85,43 +85,45 @@ class PerformanceCRUDController extends CrudController
      *
      * @return array
      */
-    private function getConfig(bool $isReadOnly = false, $displayPoster = true)
+    private function Config( $show = FALSE)
     {
-        $config = [
+        return [
             [
                 'name' => 'name',
                 'label' => 'Name Of Performance',
                 'type' => 'text',
             ],
+
             [
                 'name' => 'performance_date',
                 'label' => 'Performance Date',
                 'type' => 'datetime',
             ],
+
             [
                 'name' => 'venue_id',
                 'label' => 'Venue',
                 'type' => 'text',
             ],
+
             [
-                'name' => 'tickets',
-                'label' => 'Tickets',
-                'type' => $isReadOnly ? 'select' : 'select_multiple',
-                'attribute' => 'type',
-                'pivot' => 'true',
-            ],
-        ];
-
-        if ($displayPoster) {
-            $config[] = [
-                'label' => "Poster",
-                'name' => "poster",
-                'type' => $isReadOnly ? 'view' : 'upload',
-                'view' => 'partials/poster_preview',
+                'label' => "Article Image",
+                'name' => "image",
+                'type' => ($show ? 'view' : 'upload'),
+                'view' => 'partials/image',
                 'upload' => true,
-            ];
-        }
+            ],
 
-        return $config;
+            [
+                'label' => 'Venue', // Label for HTML form field
+                'type' => 'select',  // HTML element which displaying transactions
+                'name' => 'venue_id', // Table column which is FK for Customer table
+                'entity' => 'venue', // Function (method) in Customer model which return transactions
+                'attribute' => 'location', // Column which user see in select box
+                'model' => 'App\Models\Venue' // Model which contain FK
+            ],
+
+
+        ];
     }
 }

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name_of_theatre');
             $table->string('location')->unique();
-            $table->string('city');
             $table->timestamps();
         });
     }

@@ -13,15 +13,40 @@ class PerformanceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // only allow updates if the user is logged in
+        return backpack_auth()->check();
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function rules()
+    {
+        return [
+            'location' => 'required|min:3|max:100|unique:cities'
+        ];
+    }
+
+    /**
+     * Get the validation attributes that apply to the request.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            //
+        ];
+    }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
     {
         return [
             //
